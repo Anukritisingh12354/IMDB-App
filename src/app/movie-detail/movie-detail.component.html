@@ -1,0 +1,30 @@
+<div class="container" *ngIf="movieDetils$ | async as movie">
+
+	<button class="btn btn-primary" routerLink="/">Go Back</button>
+
+	<h1 class="my-4">{{ movie.Title }}</h1>
+
+	<div class="row">
+
+		<div class="col-md-8">
+			<img
+        class="img-fluid"
+        [src]="movie.Poster | defaultImage"
+        [alt]="movie.Title"
+        [ngClass]="{'favorite': movie.is_fav}"
+        (click)="addToFav(movie)">
+    </div>
+
+			<div class="col-md-4">
+
+				<h3 class="my-3">Actors</h3>
+				<p>{{ movie.Actors }}</p>
+
+				<h3 class="my-3">Director</h3>
+				<p>{{ movie.Director }}</p>
+
+				<h3 class="my-3">Plot</h3>
+				<p>{{ movie.Plot }}</p>
+			</div>
+		</div>
+	</div>
